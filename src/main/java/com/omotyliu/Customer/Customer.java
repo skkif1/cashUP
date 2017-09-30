@@ -1,18 +1,18 @@
 package com.omotyliu.Customer;
 
-import javax.xml.bind.annotation.XmlRootElement;
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.time.LocalDate;
 
-@XmlRootElement
 public class Customer {
 
     private Long id;
     private String firstName;
     private String lastName;
+    @JsonFormat(pattern = "dd-MM-yyyy")
     private LocalDate birthDate;
     private Gender gender;
     private Long INN;
-
 
     public Customer() {
     }
@@ -66,11 +66,12 @@ public class Customer {
     @Override
     public String toString() {
         return "Customer{" +
-                "firstName='" + firstName + '\'' +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", birthDate=" + birthDate +
                 ", gender=" + gender +
-                ", INN='" + INN + '\'' +
+                ", INN=" + INN +
                 '}';
     }
 }

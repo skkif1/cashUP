@@ -12,6 +12,7 @@ public class Order {
     private OrderStatus orderStatus;
     private BigDecimal orderSum;
     private Currency currency;
+    private Long customerId;
 
     public Order() {
     }
@@ -54,6 +55,14 @@ public class Order {
 
     public void setCurrency(Currency currency) {
         this.currency = currency;
+    }
+
+    public Long getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(Long customerId) {
+        this.customerId = customerId;
     }
 
     @Override
