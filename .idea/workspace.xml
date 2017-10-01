@@ -2,13 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bea39d0d-abfc-4ee3-bacd-666ab056d23f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/omotyliu/exceptions/CashUpException.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/omotyliu/exceptions/CustomerNotFoundException.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/omotyliu/exceptions/GlobalException.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/omotyliu/exceptions/GlobalExceptionHandler.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/omotyliu/exceptions/OrderNotFoundException.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/omotyliu/exceptions/UserAlreadyExistException.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/omotyliu/AppConfig.java" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/omotyliu/CashupApplication.class" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/omotyliu/Customer/Customer.class" afterPath="$PROJECT_DIR$/target/classes/com/omotyliu/Customer/Customer.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/omotyliu/Customer/CustomerController.class" afterPath="$PROJECT_DIR$/target/classes/com/omotyliu/Customer/CustomerController.class" />
@@ -19,20 +12,6 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/omotyliu/Order/OrderService.class" afterPath="$PROJECT_DIR$/target/classes/com/omotyliu/Order/OrderService.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/omotyliu/Order/service/OrderModel.class" afterPath="$PROJECT_DIR$/target/classes/com/omotyliu/Order/service/OrderModel.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cashup.iml" afterPath="$PROJECT_DIR$/cashup.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/omotyliu/CashupApplication.java" afterPath="$PROJECT_DIR$/src/main/java/com/omotyliu/CashupApplication.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/omotyliu/Customer/Customer.java" afterPath="$PROJECT_DIR$/src/main/java/com/omotyliu/Customer/Customer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/omotyliu/Customer/CustomerController.java" afterPath="$PROJECT_DIR$/src/main/java/com/omotyliu/Customer/CustomerController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/omotyliu/Customer/repository/MySqlCustomerRepository.java" afterPath="$PROJECT_DIR$/src/main/java/com/omotyliu/Customer/repository/MySqlCustomerRepository.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/omotyliu/Customer/service/CustomerModel.java" afterPath="$PROJECT_DIR$/src/main/java/com/omotyliu/Customer/service/CustomerModel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/omotyliu/Customer/service/CustomerRepository.java" afterPath="$PROJECT_DIR$/src/main/java/com/omotyliu/Customer/service/CustomerRepository.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/omotyliu/Order/Order.java" afterPath="$PROJECT_DIR$/src/main/java/com/omotyliu/Order/Order.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/omotyliu/Order/OrderController.java" afterPath="$PROJECT_DIR$/src/main/java/com/omotyliu/Order/OrderController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/omotyliu/Order/repository/MySqlOrderRepository.java" afterPath="$PROJECT_DIR$/src/main/java/com/omotyliu/Order/repository/MySqlOrderRepository.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/omotyliu/Order/service/OrderModel.java" afterPath="$PROJECT_DIR$/src/main/java/com/omotyliu/Order/service/OrderModel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/omotyliu/validators/CustomerValidator.java" afterPath="$PROJECT_DIR$/src/main/java/com/omotyliu/validators/CustomerValidator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/application.properties" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/application.properties" afterPath="$PROJECT_DIR$/target/classes/application.properties" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
@@ -1017,7 +996,7 @@
       <option name="presentableId" value="Default" />
       <updated>1506767284639</updated>
       <workItem from="1506767286445" duration="24274000" />
-      <workItem from="1506865372601" duration="18222000" />
+      <workItem from="1506865372601" duration="18244000" />
     </task>
     <task id="LOCAL-00001" summary="db mysql, validation, exception, CRUD">
       <created>1506799579827</created>
@@ -1026,11 +1005,18 @@
       <option name="project" value="LOCAL" />
       <updated>1506799579827</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="done">
+      <created>1506892966802</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1506892966802</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="42496000" />
+    <option name="totallyTimeSpent" value="42518000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="2560" height="1440" extended-state="0" />
@@ -1078,7 +1064,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="db mysql, validation, exception, CRUD" />
-    <option name="LAST_COMMIT_MESSAGE" value="db mysql, validation, exception, CRUD" />
+    <MESSAGE value="done" />
+    <option name="LAST_COMMIT_MESSAGE" value="done" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
