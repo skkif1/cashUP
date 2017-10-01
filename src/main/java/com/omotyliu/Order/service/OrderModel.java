@@ -3,12 +3,16 @@ package com.omotyliu.Order.service;
 import com.omotyliu.Order.Order;
 import com.omotyliu.Order.OrderService;
 import com.omotyliu.Order.OrderStatus;
+import com.omotyliu.exceptions.CustomerNotFoundException;
+import com.omotyliu.exceptions.OrderNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.Errors;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -30,8 +34,18 @@ public class OrderModel implements OrderService{
 
     @Override
     public Order createOrder(Order order) {
-        Long orderId = orderRepository.saveOrder(order);
-        order.setId(orderId);
+
+        order.setOrderStatus(OrderStatus.ACCEPTED);
+        order.setOrderDate(LocalDate.now());
+
+        try {
+
+            Long orderId = orderRepository.saveOrder(order);
+            order.setId(orderId);
+        }catch (DataIntegrityViolationException ex)
+        {
+            throw new CustomerNotFoundException();
+        }
         return order;
     }
 

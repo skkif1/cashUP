@@ -2,6 +2,9 @@ package com.omotyliu.Customer.service;
 
 import com.omotyliu.Customer.Customer;
 import com.omotyliu.Customer.CustomerService;
+import com.omotyliu.exceptions.CustomerNotFoundException;
+import com.omotyliu.exceptions.UserAlreadyExistException;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.stereotype.Service;
@@ -22,11 +25,17 @@ public class CustomerModel implements CustomerService{
 
     @Override
     public Customer createCustomer(Customer customer) {
-
-        if (customerRepository.getCustomerByINN(customer.getINN()) != null)
-                return null;
+        Customer ifExist = null;
+        try {
+             ifExist = customerRepository.getCustomerByINN(customer.getInn());
+        }catch (CustomerNotFoundException ex)
+        {
+            //NOP
+        }
+        if (ifExist != null)
+            throw new UserAlreadyExistException();
         customerRepository.saveCustomer(customer);
-        customer = customerRepository.getCustomerByINN(customer.getINN());
+        customer = customerRepository.getCustomerByINN(customer.getInn());
         return customer;
     }
 
@@ -34,7 +43,8 @@ public class CustomerModel implements CustomerService{
     public void updateCustomer(Customer customer)
     {
         Customer current = customerRepository.getCustomer(customer.getId());
-        customerRepository.saveCustomer(customer);
+        BeanUtils.copyProperties(customer, current, "id", "inn");
+        customerRepository.saveCustomer(current);
     }
 
     @Override

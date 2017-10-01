@@ -1,10 +1,12 @@
 package com.omotyliu.Order;
 
 
+import javax.xml.bind.annotation.XmlRootElement;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Currency;
 
+@XmlRootElement
 public class Order {
 
     private Long id;

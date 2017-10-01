@@ -10,5 +10,4 @@ public interface CustomerRepository {
     public void saveCustomer(Customer customer);
     public List<Customer> getAll(Integer limit);
     public Customer getCustomerByINN(Long customerINN);
-
 }

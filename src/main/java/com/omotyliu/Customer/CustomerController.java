@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 
 import org.springframework.validation.Errors;
@@ -33,7 +34,7 @@ public class CustomerController {
     }
 
 
-    @RequestMapping(value = "/add", method = RequestMethod.POST, consumes = "application/json")
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
     public ResponseEntity<?> createCustomer(@Valid @RequestBody Customer customer, Errors errors) {
 
         List<String> messages = customerService.getErrorList(errors);

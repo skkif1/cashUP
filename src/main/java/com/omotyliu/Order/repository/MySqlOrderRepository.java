@@ -5,11 +5,13 @@ import com.omotyliu.Customer.Gender;
 import com.omotyliu.Order.Order;
 import com.omotyliu.Order.OrderStatus;
 import com.omotyliu.Order.service.OrderRepository;
+import com.omotyliu.exceptions.OrderNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
 
+import javax.xml.crypto.Data;
 import java.math.BigDecimal;
 import java.sql.Date;
 import java.sql.ResultSet;
@@ -36,22 +38,34 @@ public class MySqlOrderRepository implements OrderRepository {
     @Override
     public Order getOrder(Long id) {
         String sql = "SELECT * FROM orders WHERE id = ?";
+
         Order order = new Order();
         jdbcTemplate.query(sql, (ResultSet rs) -> fillOrderObject(order, rs), id);
+        if (order.getId() == null)
+            throw new OrderNotFoundException();
         return order;
     }
 
     @Override
     public Long saveOrder(Order order) {
 
-        HashMap<String, Object> param = new HashMap<>();
-        param.put("creation_date", order.getOrderDate());
-        param.put("order_status", order.getOrderStatus());
-        param.put("summ", order.getOrderSum());
-        param.put("currency", order.getCurrency().getSymbol());
-        param.put("customer_id", order.getCustomerId());
+        Long orderId = null;
+        if (order.getId() == null)
+        {
+            HashMap<String, Object> param = new HashMap<>();
+            param.put("creation_date", Date.valueOf(order.getOrderDate()));
+            param.put("order_status", order.getOrderStatus());
+            param.put("summ", order.getOrderSum());
+            param.put("currency", order.getCurrency().getSymbol());
+            param.put("customer_id", order.getCustomerId());
+            orderId = (Long) simpleJdbcInsert.executeAndReturnKey(param);
+        }else
+        {
+            String sql = "UPDATE orders SET creation_date = ?, order_status = ?, summ = ?, currency = ?, customer_id = ?";
+            jdbcTemplate.update(sql, Date.valueOf(order.getOrderDate()), order.getOrderStatus().toString(), order.getOrderSum(),
+                                    order.getCurrency().getSymbol(), order.getCustomerId());
 
-        Long orderId  = (Long) simpleJdbcInsert.executeAndReturnKey(param);
+        }
         return orderId;
     }
 

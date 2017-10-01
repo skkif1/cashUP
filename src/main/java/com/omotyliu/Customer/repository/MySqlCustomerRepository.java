@@ -4,7 +4,9 @@ package com.omotyliu.Customer.repository;
 import com.omotyliu.Customer.Customer;
 import com.omotyliu.Customer.Gender;
 import com.omotyliu.Customer.service.CustomerRepository;
+import com.omotyliu.exceptions.CustomerNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import java.sql.Date;
@@ -30,16 +32,20 @@ public class MySqlCustomerRepository implements CustomerRepository {
 
         Customer customer = new Customer();
         jdbcTemplate.query(sql, (ResultSet rs) -> fillCustomerObject(customer, rs), id);
+        if(customer.getId() == null)
+            throw new CustomerNotFoundException();
         return customer;
     }
 
     @Override
     public Customer getCustomerByINN(Long customerINN) {
-        String sql = "SELECT * FROM customers WHERE id = ?";
+        String sql = "SELECT * FROM customers WHERE INN = ?";
 
         Customer customer = new Customer();
         jdbcTemplate.query(sql, (ResultSet rs) -> fillCustomerObject(customer, rs), customerINN);
-        return null;
+        if (customer.getId() == null)
+            throw new CustomerNotFoundException();
+        return customer;
     }
 
     @Override
@@ -49,10 +55,10 @@ public class MySqlCustomerRepository implements CustomerRepository {
 
         if (customer.getId() == null)
             jdbcTemplate.update(insert, customer.getFirstName(), customer.getLastName(), Date.valueOf(customer.getBirthDate()),
-                    customer.getGender().toString(), customer.getINN());
+                    customer.getGender().toString(), customer.getInn());
         else
             jdbcTemplate.update(update, customer.getFirstName(), customer.getLastName(), Date.valueOf(customer.getBirthDate()),
-                    customer.getGender().toString(), customer.getINN(), customer.getId());
+                    customer.getGender().toString(), customer.getInn(), customer.getId());
     }
 
     @Override
@@ -66,10 +72,6 @@ public class MySqlCustomerRepository implements CustomerRepository {
             fillCustomerObject(customer, rs);
             allCustomers.add(customer);
         }, limit);
-
-        System.out.println(limit);
-        System.out.println(allCustomers);
-
         return allCustomers;
     }
 
@@ -80,6 +82,6 @@ public class MySqlCustomerRepository implements CustomerRepository {
         customer.setLastName(rs.getString("last_name"));
         customer.setBirthDate(rs.getDate("birthdate").toLocalDate());
         customer.setGender(Gender.valueOf(rs.getString("gender").toUpperCase()));
-        customer.setINN(rs.getLong("INN"));
+        customer.setInn(rs.getLong("INN"));
     }
 }

@@ -1,7 +1,6 @@
 package com.omotyliu.validators;
 
 import com.omotyliu.Customer.Customer;
-import com.omotyliu.Customer.Gender;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
@@ -31,7 +30,7 @@ public class CustomerValidator implements Validator {
         if (customer.getGender() == null)
             errors.reject("gender", "invalid gender");
 
-        if(customer.getINN() == null || customer.getINN().toString().length() != 10)
+        if(customer.getInn() == null || customer.getInn().toString().length() != 10)
             errors.reject("INN", "invalid INN");
     }
 
